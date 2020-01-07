@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Flight</title>
+</head>
+<body>
+  <ul>
+    <h1>flight {{flight.id}}</h1>
+    <li>{{flight.origin}} </li>
+    <li>{{flight.destination}}</li>
+    <li>Valid {{flight.is_valid_flight}}</li>
+  </ul>
+
+  <h2>passenger</h2>
+  <ul>
+    {% for passenger in passenger %}
+    <li>{{passenger}}</li>
+    {% empty %}
+    <li>NO naujaawn</li>
+    {% endfor %}
+  </ul>
+  <h2>ADD passenger</h2>
+  {% if non_passenger %}
+  <form action="{% url 'book' flight.id %}" method="post">
+    {% csrf_token %}
+    <select name="passenger" id="">
+      {% for passenger in non_passenger %}
+      <option value="{{passenger.id}}">{{passenger.id}}--{{passenger}}</option>
+      {% endfor %}
+
+    </select>
+    <input type='submit' value='book flight'>
+  </form>
+  {% else %}
+  <div>NO passenger to add</div>
+  {% endif %}
+  <a href="{% url 'index' %}">Go back</a>
+
+
+</body>
+</html>
