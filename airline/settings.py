@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'airline.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgressql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER':'postgres',
         'HOST':'db',
